@@ -9,9 +9,14 @@ words nobody uses, and the line only you can say.
 It runs in Claude Code, the Claude desktop app, Cowork, or the Codex tab in ChatGPT. Any model
 works; Claude gives the best buyer card and synthesis. Everything lives in this folder.
 
+Built for [AI Strategy Exchange](https://www.skool.com/aistrategyexchange), where independent
+coaches and consultants learn to put AI to work in their business. The workshop that walks through
+this folder, and the classes it builds on, live there. [Join the community](https://www.skool.com/aistrategyexchange).
+
 ## Setup (10 minutes)
 
-1. Download this folder and open it in Claude Code, the Claude desktop app, Cowork, or Codex.
+1. Download or clone this folder and open it in Claude Code, the Claude desktop app, Cowork, or
+   Codex.
 2. Say "set me up". The intake asks what buyer material you have (calls, summaries, reviews,
    emails) and sorts it into `inputs/`, asks what the calls cannot tell it, records what you
    believe about your buyer today, and checks that your agent can drive your Chrome (Claude in
@@ -22,7 +27,7 @@ works; Claude gives the best buyer card and synthesis. Everything lives in this 
 
 Tell your agent, in order:
 
-1. "Run buyer brain." Builds `cards/<buyer>.md` from your calls.
+1. "Run buyer brain." Builds `cards/<buyer>.md` from your calls and your clients' written words.
    No transcripts? "Run literature casting" first (Max Bernstein's buyer casting from AI Strategy
    Exchange Class 01), then "run buyer brain in hypothesis mode".
 2. "Map my competitors." Finds who your buyers would actually pick instead of you, and what each

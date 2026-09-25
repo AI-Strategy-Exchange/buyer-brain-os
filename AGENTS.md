@@ -3,7 +3,8 @@
 This folder reads a seller's sales and discovery calls to find who their buyers really are, maps
 the competitors those buyers would pick instead, reads each competitor's site as those buyers, and
 maps the gaps: what buyers need versus what competitors offer, their angles, their words, how they
-reach people, and what they assume moves a buyer. It runs in Claude Code or Codex.
+reach people, and what they assume moves a buyer. It runs in Claude Code, the Claude desktop app,
+Cowork, or Codex.
 Skills live in `.agents/skills/` (Claude sees the same folder through `.claude/skills`).
 
 ## The pipeline
@@ -13,14 +14,17 @@ skill decides who runs it: gathering raw data goes to Codex and the analysis tha
 and the report goes to Claude when both are installed; otherwise the agent you are in runs
 everything.
 
-1. **intake**: interviews the user, seals what they believe about their buyer, gets transcripts
-   in. Writes `brief.md`. Nothing else runs until it exists.
+1. **intake**: finds out what buyer material the user has and sorts it into `inputs/transcripts/`,
+   `inputs/summaries/`, and `inputs/written/`, seals what they believe about their buyer, asks what
+   the calls cannot supply, and checks the Chrome connection. Writes `brief.md` from
+   `templates/brief.md`. Nothing else runs until it exists.
 2. **buyer patterns**, one of two paths, both produce `cards/<buyer>.md`:
    - Have transcripts in `inputs/transcripts/`: run the `buyer-brain` skill.
    - No transcripts: run `literature-casting` first and save its full output, including the text
      it mined, to `outputs/literature-casting.md`. Hand it `brief.md` as the avatar doc; the belief
-     is already sealed there, so do not run the Casting Call again. Then run `buyer-brain` in hypothesis mode on it
-     plus `inputs/written/`. Replace hypotheses with call evidence as soon as you have calls.
+     is already sealed there, so do not run the Casting Call again. Then run `buyer-brain` in
+     hypothesis mode on it plus `inputs/written/`. Replace hypotheses with call evidence as soon
+     as you have calls.
 3. **competitor-map**: finds who these buyers would pick instead, from the calls first, then
    search from each buyer pattern's seat. Maps what each one sells, whether it does the same job,
    its angle, its words, and how it reaches people. Keeps only real competitors. Writes
@@ -38,8 +42,8 @@ everything.
 At any point, `python3 scripts/render_report.py` bundles everything written so far into
 `outputs/report.html` for reading or presenting.
 
-How to read a buyer is in `.agents/skills/buyer-brain/references/method.md`. Literature Casting is Max Bernstein's skill from
-AI Strategy Exchange Class 01, included unchanged.
+How to read a buyer is in `.agents/skills/buyer-brain/references/method.md`. Literature Casting is
+Max Bernstein's skill from AI Strategy Exchange Class 01, included unchanged.
 
 ## Rules
 
