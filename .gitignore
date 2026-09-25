@@ -1,0 +1,15 @@
+.env
+inputs/transcripts/*
+!inputs/transcripts/README.md
+inputs/summaries/*
+!inputs/summaries/README.md
+inputs/written/*
+!inputs/written/README.md
+cards/*
+!cards/README.md
+outputs/*
+!outputs/README.md
+.DS_Store
+/brief.md
+.work/
+__pycache__/
