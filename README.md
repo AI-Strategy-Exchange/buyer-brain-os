@@ -23,6 +23,43 @@ this folder, and the classes it builds on, live there. [Join the community](http
    Chrome with `claude --chrome`, or the Chrome plugin in Codex). No calls is fine: it runs Max's
    Literature Casting and treats the result as a hypothesis.
 
+## How it works
+
+Each step reads what the last one wrote. Everything is a plain markdown file in this folder.
+
+```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 320}}}%%
+flowchart TD
+  subgraph KNOW["Know the buyer"]
+    IN["Your calls, summaries,<br/>reviews and emails"] --> I
+    I["<b>1. Intake</b><br/>Sorts your material<br/>Seals what you believe today"]
+    I --> Q{"Have calls?"}
+    Q -->|no| L["<b>Literature casting</b><br/>Casts your buyer from fiction<br/>Mines where they really talk"]
+    Q -->|yes| B
+    L --> B
+    B["<b>2. Buyer brain</b><br/>Reads each call on its own<br/>Then reads across all of them"]
+    B --> CARD[/"<b>Buyer card</b><br/>Several patterns, their words<br/>What they fear and protect"/]
+  end
+
+  subgraph FIELD["Know the field"]
+    M["<b>3. Competitor map</b><br/>Who they'd pick instead<br/>Tested against how you work"]
+    M --> R["<b>4. Competitor read</b><br/>Opens each site in Chrome<br/>Reads it as each buyer"]
+  end
+
+  subgraph OPEN["Find the opening"]
+    X["<b>5. Cross-check</b><br/>Offering, approach, language,<br/>reach and mind gaps"]
+    X --> S[/"<b>synthesis.md</b> read first<br/><b>gaps.md</b> only-we lines<br/>and what to stop saying"/]
+  end
+
+  KNOW --> FIELD
+  FIELD --> OPEN
+  FIELD -.-> W["<b>Watch</b> (optional)<br/>Weekly rerun, flags<br/>competitor changes"]
+```
+
+With both Claude Code and Codex installed, the gathering (search, site reads, per-call notes) goes
+to Codex and the analysis (the card, the gaps, the synthesis) goes to Claude. With one, it runs
+everything.
+
 ## Run it
 
 Tell your agent, in order:
